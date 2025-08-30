@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="180" height="40" viewBox="0 0 180 40" role="img" aria-label="The Boutique logo">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#DCC5B2"/>
+      <stop offset="100%" stop-color="#D9A299"/>
+    </linearGradient>
+  </defs>
+  <g fill="none" stroke="url(#g)" stroke-width="2">
+    <rect x="4" y="6" width="28" height="22" rx="3" ry="3"/>
+    <path d="M4 14h28M18 6v22"/>
+  </g>
+  <path d="M18 6l5 5-5 5-5-5 5-5z" fill="#F0E4D3"/>
+  <text x="40" y="26" font-size="18" font-weight="700" fill="#FAF7F3" font-family="Segoe UI, Arial, sans-serif">The Boutique</text>
+</svg>
