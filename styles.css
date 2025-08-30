@@ -138,19 +138,21 @@ h1, h2, h3, h4 {
   margin-top: 20px;
 }
 .product-card {
-  background: #fff;
-  border-radius: 16px;
-  padding: 14px;
-  box-shadow: 0 6px 16px rgba(87,86,79,0.12);
+  background: #F8F3CE;
+  border-radius: 18px;
+  padding: 16px;
+  box-shadow: 0 8px 20px rgba(87,86,79,0.12);
   border: 1px solid rgba(87,86,79,0.08);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   position: relative;
 }
-.product-card:hover { transform: translateY(-3px); box-shadow: 0 10px 24px rgba(87,86,79,0.18); }
+.product-card:hover { transform: translateY(-4px); box-shadow: 0 14px 28px rgba(87,86,79,0.2); }
+
+.product-card h4 { color: #57564F; margin: 6px 0 4px; font-weight: 700; }
 
 .product-image {
-  height: 160px;
-  border-radius: 12px;
+  height: 168px;
+  border-radius: 14px;
   background: linear-gradient(135deg, #F8F3CE, #DDDAD0);
   display: block;
   margin-bottom: 12px;
@@ -163,11 +165,11 @@ h1, h2, h3, h4 {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 10px;
+  margin-top: 8px;
 }
 .price {
   font-weight: 700;
-  color: #57564F;
+  color: #7A7A73;
 }
 .wishlist-btn {
   width: 36px;
@@ -178,12 +180,30 @@ h1, h2, h3, h4 {
   display: grid;
   place-items: center;
   cursor: pointer;
-  transition: background 0.2s ease, transform 0.1s ease;
+  transition: background 0.2s ease, transform 0.12s ease, box-shadow 0.2s ease;
+  box-shadow: 0 2px 6px rgba(87,86,79,0.12);
 }
-.wishlist-btn:hover { transform: translateY(-1px); }
+.wishlist-btn:hover { transform: translateY(-1px); box-shadow: 0 4px 10px rgba(87,86,79,0.18); }
 .wishlist-btn svg { width: 18px; height: 18px; fill: #7A7A73; }
 .wishlist-btn.active { background: #57564F; }
 .wishlist-btn.active svg { fill: #F8F3CE; }
+
+/* Add-to-cart button enhanced */
+.btn.add-to-cart {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #57564F;
+  color: #F8F3CE;
+  border: none;
+  font-weight: 700;
+  padding: 10px 16px;
+  border-radius: 999px;
+  box-shadow: 0 4px 10px rgba(87,86,79,0.15);
+  transform: translateZ(0);
+}
+.btn.add-to-cart .btn-icon { width: 18px; height: 18px; fill: #DDDAD0; }
+.btn.add-to-cart:hover { background: #7A7A73; transform: translateY(-1px) scale(1.03); box-shadow: 0 8px 18px rgba(87,86,79,0.2); }
 
 /* 🌟 Shop Page */
 .page-title {
