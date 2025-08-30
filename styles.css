@@ -40,19 +40,49 @@ h1, h2, h3, h4 {
   border-radius: 6px;
   font-weight: 600;
   color: #000000;
+  position: relative;
+  text-decoration: none;
 }
 .navbar nav a:hover {
-  background: rgba(0,0,0,0.08);
+  background: transparent;
+}
+.navbar nav a::after {
+  content: "";
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  bottom: 2px;
+  height: 2px;
+  background: #000000;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.2s ease;
+}
+.navbar nav a:hover::after,
+.navbar nav a:focus-visible::after {
+  transform: scaleX(1);
 }
 .navbar nav a.active {
-  background: white;
+  background: transparent;
   color: #000000;
+}
+.navbar nav a.active::after {
+  transform: scaleX(1);
 }
 .badge {
   background: #B6B09F;
   padding: 2px 8px;
   border-radius: 50%;
   margin-left: 4px;
+  display: inline-block;
+  font-size: 12px;
+  line-height: 1.4;
+}
+.nav-icon {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+  vertical-align: middle;
 }
 
 /* 🌟 Hero Section */
