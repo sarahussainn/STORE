@@ -174,6 +174,10 @@ h1, h2, h3, h4 {
   font-weight: 700;
   color: #D9A299;
 }
+.card-cta { display: flex; gap: 10px; margin-top: 10px; }
+.card-cta .btn { flex: 1; }
+/* Ensure featured add-to-cart doesn't force full width when in a row */
+.featured .btn.add-to-cart { width: auto; padding: 10px 16px; }
 .wishlist-btn {
   width: 36px;
   height: 36px;
