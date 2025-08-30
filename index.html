@@ -10,17 +10,27 @@
 <body>
   <header class="navbar">
     <div class="nav-left">
-      <h1 class="logo">The Boutique</h1>
+      <a href="index.html" class="brand" aria-label="The Boutique home">
+        <img src="logo.svg" alt="The Boutique" class="logo-img"/>
+      </a>
     </div>
     <nav class="nav-right">
       <a href="index.html" class="active">Home</a>
       <a href="shop.html">Shop</a>
-      <a href="cart.html" id="cart-link">Cart <span id="cart-badge" class="badge">0</span></a>
+      <a href="cart.html" id="cart-link" aria-label="Cart" title="Cart"><svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4h-2l-1 2h2l3.6 7.59-1.35 2.44A2 2 0 0 0 10 19h9v-2h-9l1.1-2h7.45a2 2 0 0 0 1.79-1.11l3.58-6.89A1 1 0 0 0 22 4H7zM7 22a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm10 0a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"/></svg><span id="cart-badge" class="badge">0</span></a>
     </nav>
   </header>
 
   <main>
     <section class="hero">
+      <div class="hero-slider" id="hero-slider">
+        <div class="hero-slide slide-1 active" role="img" aria-label="Elegant palette background 1"></div>
+        <div class="hero-slide slide-2" role="img" aria-label="Elegant palette background 2"></div>
+        <div class="hero-slide slide-3" role="img" aria-label="Elegant palette background 3"></div>
+        <button class="hero-nav prev" aria-label="Previous slide">&#10094;</button>
+        <button class="hero-nav next" aria-label="Next slide">&#10095;</button>
+        <div class="hero-dots" id="hero-dots"></div>
+      </div>
       <div class="hero-overlay"></div>
       <div class="hero-content">
         <h2>Elegant Shipping Supplies & Accessories</h2>
@@ -32,17 +42,39 @@
     <section class="featured">
       <h3>Featured</h3>
       <div class="featured-grid" id="featured-grid">
-        <div class="product-card small">
-          <img src="" alt="Shipping box product image">
+        <div class="product-card">
+          <div class="product-image image-boxes"></div>
           <h4>Shipping Box</h4>
-          <p class="price">$10</p>
-          <button onclick="location.href='shop.html'">View</button>
+          <div class="card-actions">
+            <p class="price">$10</p>
+            <button class="wishlist-btn" aria-label="Add to wishlist" aria-pressed="false" onclick="toggleWishlist('Shipping Box')">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 6 4 4 6.5 4c1.74 0 3.41.81 4.5 2.09C12.09 4.81 13.76 4 15.5 4 18 4 20 6 20 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+            </button>
+          </div>
+          <div class="card-cta">
+            <button class="btn add-to-cart" onclick="addToCartByName('Shipping Box')">
+              <svg class="btn-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4h-2l-1 2h2l3.6 7.59-1.35 2.44A2 2 0 0 0 10 19h9v-2h-9l1.1-2h7.45a2 2 0 0 0 1.79-1.11l3.58-6.89A1 1 0 0 0 22 4H7zM7 22a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm10 0a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"/></svg>
+              <span>Add to Cart</span>
+            </button>
+
+          </div>
         </div>
-        <div class="product-card small">
-          <img src="" alt="Elegant Tape product image">
+        <div class="product-card">
+          <div class="product-image image-tape"></div>
           <h4>Elegant Tape</h4>
-          <p class="price">$5</p>
-          <button onclick="location.href='shop.html'">View</button>
+          <div class="card-actions">
+            <p class="price">$5</p>
+            <button class="wishlist-btn" aria-label="Add to wishlist" aria-pressed="false" onclick="toggleWishlist('Elegant Tape')">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 6 4 4 6.5 4c1.74 0 3.41.81 4.5 2.09C12.09 4.81 13.76 4 15.5 4 18 4 20 6 20 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+            </button>
+          </div>
+          <div class="card-cta">
+            <button class="btn add-to-cart" onclick="addToCartByName('Elegant Tape')">
+              <svg class="btn-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4h-2l-1 2h2l3.6 7.59-1.35 2.44A2 2 0 0 0 10 19h9v-2h-9l1.1-2h7.45a2 2 0 0 0 1.79-1.11l3.58-6.89A1 1 0 0 0 22 4H7zM7 22a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm10 0a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"/></svg>
+              <span>Add to Cart</span>
+            </button>
+
+          </div>
         </div>
       </div>
     </section>

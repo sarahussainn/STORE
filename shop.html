@@ -8,25 +8,33 @@
 </head>
 <body>
   <header class="navbar">
-    <div class="nav-left"><h1 class="logo">The Boutique</h1></div>
+    <div class="nav-left"><a href="index.html" class="brand" aria-label="The Boutique home"><img src="logo.svg" alt="The Boutique" class="logo-img"></a></div>
     <nav class="nav-right">
       <a href="index.html">Home</a>
       <a href="shop.html" class="active">Shop</a>
-      <a href="cart.html" id="cart-link-2">Cart <span id="cart-badge-2" class="badge">0</span></a>
+      <a href="cart.html" id="cart-link-2" aria-label="Cart" title="Cart"><svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4h-2l-1 2h2l3.6 7.59-1.35 2.44A2 2 0 0 0 10 19h9v-2h-9l1.1-2h7.45a2 2 0 0 0 1.79-1.11l3.58-6.89A1 1 0 0 0 22 4H7zM7 22a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm10 0a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"/></svg><span id="cart-badge-2" class="badge">0</span></a>
     </nav>
   </header>
 
   <main>
     <h2 class="page-title">Shop Our Collection</h2>
 
-    <div class="controls">
-      <input id="search" placeholder="Search products..." />
-      <select id="category">
-        <option value="all">All</option>
-        <option value="boxes">Boxes</option>
-        <option value="tape">Tape</option>
-        <option value="eco">Eco</option>
-      </select>
+    <div class="shop-toolbar">
+      <div class="filter-pills" role="tablist" aria-label="Filter products by category">
+        <button class="filter-pill active" data-category="all" role="tab" aria-selected="true">All</button>
+        <button class="filter-pill" data-category="boxes" role="tab" aria-selected="false">Boxes</button>
+        <button class="filter-pill" data-category="tape" role="tab" aria-selected="false">Tape</button>
+        <button class="filter-pill" data-category="eco" role="tab" aria-selected="false">Eco</button>
+      </div>
+      <div class="controls">
+        <input id="search" placeholder="Search products..." />
+        <select id="category" class="visually-hidden">
+          <option value="all">All</option>
+          <option value="boxes">Boxes</option>
+          <option value="tape">Tape</option>
+          <option value="eco">Eco</option>
+        </select>
+      </div>
     </div>
 
     <section id="products" class="product-grid" aria-live="polite"></section>

@@ -3,8 +3,11 @@
   "version": "1.0.0",
   "description": "Elegant shipping supplies & accessories store",
   "scripts": {
-    "start": "live-server"
+    "dev": "live-server --port=3000 --open=index.html --quiet",
+    "start": "live-server --port=3000 --open=index.html --quiet"
   },
   "dependencies": {},
-  "devDependencies": {}
+  "devDependencies": {
+    "live-server": "^1.2.2"
+  }
 }

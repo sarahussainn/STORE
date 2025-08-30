@@ -8,11 +8,11 @@
 </head>
 <body>
   <header class="navbar">
-    <div class="nav-left"><h1 class="logo">The Boutique</h1></div>
+    <div class="nav-left"><a href="index.html" class="brand" aria-label="The Boutique home"><img src="logo.svg" alt="The Boutique" class="logo-img"></a></div>
     <nav class="nav-right">
       <a href="index.html">Home</a>
       <a href="shop.html">Shop</a>
-      <a href="cart.html" class="active">Cart <span id="cart-badge-3" class="badge">0</span></a>
+      <a href="cart.html" class="active" aria-label="Cart" title="Cart"><svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4h-2l-1 2h2l3.6 7.59-1.35 2.44A2 2 0 0 0 10 19h9v-2h-9l1.1-2h7.45a2 2 0 0 0 1.79-1.11l3.58-6.89A1 1 0 0 0 22 4H7zM7 22a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm10 0a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"/></svg><span id="cart-badge-3" class="badge">0</span></a>
     </nav>
   </header>
 
@@ -22,7 +22,9 @@
     <section id="cart-items" class="cart-list" aria-live="polite"></section>
 
     <div class="cart-summary">
-      <p class="cart-total">Subtotal: $<span id="cart-total">0</span></p>
+      <div class="summary-row"><span>Subtotal</span><span>$<span id="cart-subtotal">0</span></span></div>
+      <div class="summary-row"><span>Shipping</span><span>$<span id="cart-shipping">0</span></span></div>
+      <div class="summary-row summary-total"><span>Total</span><span>$<span id="cart-grandtotal">0</span></span></div>
     </div>
 
     <section class="checkout">
@@ -37,6 +39,7 @@
         </div>
       </form>
     </section>
+    <button id="checkout-sticky" class="checkout-sticky" aria-label="Checkout">Checkout</button>
   </main>
 
   <footer>
