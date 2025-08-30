@@ -73,26 +73,40 @@ function addToCart(i) {
 // Render cart
 function renderCart() {
   const container = document.getElementById("cart-items");
-  const totalEl = document.getElementById("cart-total");
+  const subEl = document.getElementById("cart-subtotal");
+  const shipEl = document.getElementById("cart-shipping");
+  const grandEl = document.getElementById("cart-grandtotal");
   if (!container) return;
   container.innerHTML = "";
   if (cart.length === 0) {
-    container.innerHTML = "<p>Your cart is empty. <a href='shop.html'>Go shopping</a>.</p>";
-    if (totalEl) totalEl.textContent = "0";
+    container.innerHTML = "<p class=\"empty-cart\">Your cart is feeling lonely 💔 <a class=\"btn\" href='shop.html'>Shop now</a>.</p>";
+    if (subEl) subEl.textContent = "0";
+    if (shipEl) shipEl.textContent = "0";
+    if (grandEl) grandEl.textContent = "0";
     return;
   }
   let total = 0;
   cart.forEach((item, idx) => {
     total += item.price * item.qty;
     const div = document.createElement("div");
+    div.className = "cart-item";
     div.innerHTML = `
-      <span>${item.name} - $${item.price}</span>
-      <input type="number" min="1" value="${item.qty}" onchange="updateQty(${idx}, this.value)">
-      <button onclick="removeFromCart(${idx})">Remove</button>
+      <button class="remove-item" aria-label="Remove item" onclick="removeFromCart(${idx})">&times;</button>
+      <div class="cart-thumb"><span>Image coming soon</span></div>
+      <div class="cart-info">
+        <h4 class="cart-name">${item.name}</h4>
+        <p class="cart-price">$${item.price}</p>
+      </div>
+      <div class="cart-qty">
+        <input class="qty-input" type="number" min="1" value="${item.qty}" onchange="updateQty(${idx}, this.value)">
+      </div>
     `;
     container.appendChild(div);
   });
-  if (totalEl) totalEl.textContent = total;
+  const shipping = calcShipping(total);
+  if (subEl) subEl.textContent = total.toFixed(2);
+  if (shipEl) shipEl.textContent = shipping.toFixed(2);
+  if (grandEl) grandEl.textContent = (total + shipping).toFixed(2);
 }
 
 // Update quantity
@@ -102,6 +116,11 @@ function updateQty(i, qty) {
   saveCart();
   renderCart();
   updateCartBadge();
+}
+
+function calcShipping(subtotal) {
+  if (subtotal <= 0) return 0;
+  return subtotal > 50 ? 0 : 5;
 }
 
 // Remove item
@@ -131,7 +150,7 @@ const checkoutForm = document.getElementById("checkout-form");
 if (checkoutForm) {
   checkoutForm.addEventListener("submit", e => {
     e.preventDefault();
-    alert("Thank you for your order! Total: $" + document.getElementById("cart-total").textContent);
+    alert("Thank you for your order! Total: $" + (document.getElementById("cart-grandtotal")?.textContent || "0"));
     cart = [];
     saveCart();
     renderCart();
@@ -228,4 +247,10 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   initFilterPills();
+
+  const sticky = document.getElementById("checkout-sticky");
+  if (sticky) sticky.addEventListener("click", () => {
+    const form = document.getElementById("checkout-form");
+    if (form) form.scrollIntoView({ behavior: "smooth", block: "start" });
+  });
 });
