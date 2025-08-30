@@ -19,14 +19,22 @@
   <main>
     <h2 class="page-title">Shop Our Collection</h2>
 
-    <div class="controls">
-      <input id="search" placeholder="Search products..." />
-      <select id="category">
-        <option value="all">All</option>
-        <option value="boxes">Boxes</option>
-        <option value="tape">Tape</option>
-        <option value="eco">Eco</option>
-      </select>
+    <div class="shop-toolbar">
+      <div class="filter-pills" role="tablist" aria-label="Filter products by category">
+        <button class="filter-pill active" data-category="all" role="tab" aria-selected="true">All</button>
+        <button class="filter-pill" data-category="boxes" role="tab" aria-selected="false">Boxes</button>
+        <button class="filter-pill" data-category="tape" role="tab" aria-selected="false">Tape</button>
+        <button class="filter-pill" data-category="eco" role="tab" aria-selected="false">Eco</button>
+      </div>
+      <div class="controls">
+        <input id="search" placeholder="Search products..." />
+        <select id="category" class="visually-hidden">
+          <option value="all">All</option>
+          <option value="boxes">Boxes</option>
+          <option value="tape">Tape</option>
+          <option value="eco">Eco</option>
+        </select>
+      </div>
     </div>
 
     <section id="products" class="product-grid" aria-live="polite"></section>
