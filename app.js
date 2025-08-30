@@ -122,11 +122,55 @@ if (clearCartBtn) {
   });
 }
 
+function initHeroSlider() {
+  const slider = document.getElementById("hero-slider");
+  if (!slider) return;
+  const slides = Array.from(slider.querySelectorAll(".hero-slide"));
+  const dotsWrap = document.getElementById("hero-dots");
+  let current = 0;
+  let timer = null;
+
+  function goTo(index) {
+    current = (index + slides.length) % slides.length;
+    slides.forEach((s, i) => s.classList.toggle("active", i === current));
+    const dots = Array.from(dotsWrap.querySelectorAll(".hero-dot"));
+    dots.forEach((d, i) => d.classList.toggle("active", i === current));
+  }
+
+  function start() {
+    stop();
+    timer = setInterval(() => goTo(current + 1), 5000);
+  }
+  function stop() { if (timer) clearInterval(timer); }
+
+  // Build dots
+  slides.forEach((_, i) => {
+    const dot = document.createElement("button");
+    dot.className = "hero-dot";
+    dot.setAttribute("aria-label", `Go to slide ${i + 1}`);
+    dot.addEventListener("click", () => { goTo(i); start(); });
+    dotsWrap.appendChild(dot);
+  });
+
+  const prev = slider.querySelector(".hero-nav.prev");
+  const next = slider.querySelector(".hero-nav.next");
+  if (prev) prev.addEventListener("click", () => { goTo(current - 1); start(); });
+  if (next) next.addEventListener("click", () => { goTo(current + 1); start(); });
+
+  slider.addEventListener("mouseenter", stop);
+  slider.addEventListener("mouseleave", start);
+  document.addEventListener("visibilitychange", () => document.hidden ? stop() : start());
+
+  goTo(0);
+  start();
+}
+
 // Initialize
 document.addEventListener("DOMContentLoaded", () => {
   renderProducts();
   renderCart();
   updateCartBadge();
+  initHeroSlider();
   const search = document.getElementById("search");
   const category = document.getElementById("category");
   if (search) search.addEventListener("input", renderProducts);
