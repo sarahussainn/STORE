@@ -6,8 +6,8 @@
   font-family: "Segoe UI", Arial, sans-serif;
 }
 body {
-  background: #DDDAD0;
-  color: #3E0703;
+  background: #F8F3CE;
+  color: #57564F;
   line-height: 1.6;
 }
 a {
@@ -16,7 +16,7 @@ a {
 }
 h1, h2, h3, h4 {
   font-weight: 700;
-  color: #3E0703;
+  color: #57564F;
 }
 
 /* 🌟 Navbar */
@@ -25,8 +25,8 @@ h1, h2, h3, h4 {
   justify-content: space-between;
   align-items: center;
   padding: 12px 20px;
-  background: linear-gradient(90deg, #660B05, #8C1007);
-  color: #DDDAD0;
+  background: linear-gradient(90deg, #57564F, #7A7A73);
+  color: #F8F3CE;
   position: sticky;
   top: 0;
   z-index: 1000;
@@ -39,7 +39,7 @@ h1, h2, h3, h4 {
   padding: 6px 12px;
   border-radius: 6px;
   font-weight: 600;
-  color: #DDDAD0;
+  color: #F8F3CE;
   position: relative;
   text-decoration: none;
 }
@@ -53,7 +53,7 @@ h1, h2, h3, h4 {
   right: 12px;
   bottom: 2px;
   height: 2px;
-  background: #DDDAD0;
+  background: #F8F3CE;
   transform: scaleX(0);
   transform-origin: left;
   transition: transform 0.2s ease;
@@ -64,13 +64,13 @@ h1, h2, h3, h4 {
 }
 .navbar nav a.active {
   background: transparent;
-  color: #DDDAD0;
+  color: #F8F3CE;
 }
 .navbar nav a.active::after {
   transform: scaleX(1);
 }
 .badge {
-  background: #8C1007;
+  background: #7A7A73;
   padding: 2px 8px;
   border-radius: 50%;
   margin-left: 4px;
@@ -89,12 +89,12 @@ h1, h2, h3, h4 {
 .hero {
   position: relative;
   height: 80vh;
-  background: linear-gradient(rgba(62,7,3,0.6), rgba(140,16,7,0.6));
+  background: linear-gradient(rgba(87,86,79,0.6), rgba(122,122,115,0.6));
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
-  color: #DDDAD0;
+  color: #F8F3CE;
   overflow: hidden;
 }
 .hero-content h2 {
@@ -108,22 +108,22 @@ h1, h2, h3, h4 {
 .btn {
   display: inline-block;
   padding: 10px 20px;
-  background: #8C1007;
-  color: #DDDAD0;
+  background: #57564F;
+  color: #F8F3CE;
   border-radius: 6px;
   transition: 0.3s;
 }
 .btn:hover {
-  background: #660B05;
+  background: #7A7A73;
 }
 .btn.ghost {
   background: transparent;
-  border: 2px solid #8C1007;
-  color: #8C1007;
+  border: 2px solid #57564F;
+  color: #57564F;
 }
 .btn.ghost:hover {
-  background: #8C1007;
-  color: #DDDAD0;
+  background: #57564F;
+  color: #F8F3CE;
 }
 
 /* 🌟 Featured Products */
@@ -244,9 +244,9 @@ footer {
 .hero-slide.active { opacity: 1; }
 
 /* Palette-based backgrounds */
-.slide-1 { background: radial-gradient(circle at 30% 20%, #DDDAD0 0%, #660B05 45%, #3E0703 100%); }
-.slide-2 { background: linear-gradient(120deg, #3E0703 0%, #8C1007 60%, #DDDAD0 100%); }
-.slide-3 { background: conic-gradient(from 200deg at 50% 50%, #8C1007, #660B05, #3E0703, #DDDAD0, #8C1007); }
+.slide-1 { background: radial-gradient(circle at 30% 20%, #F8F3CE 0%, #7A7A73 45%, #57564F 100%); }
+.slide-2 { background: linear-gradient(120deg, #57564F 0%, #7A7A73 60%, #F8F3CE 100%); }
+.slide-3 { background: conic-gradient(from 200deg at 50% 50%, #7A7A73, #57564F, #DDDAD0, #F8F3CE, #7A7A73); }
 
 /* Slider controls */
 .hero-nav {
@@ -281,8 +281,8 @@ footer {
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: rgba(221,218,208,0.5);
-  border: 1px solid rgba(221,218,208,0.8);
+  background: rgba(248,243,206,0.5);
+  border: 1px solid rgba(248,243,206,0.8);
   cursor: pointer;
 }
-.hero-dot.active { background: #DDDAD0; }
+.hero-dot.active { background: #F8F3CE; }
