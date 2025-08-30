@@ -150,11 +150,20 @@ const checkoutForm = document.getElementById("checkout-form");
 if (checkoutForm) {
   checkoutForm.addEventListener("submit", e => {
     e.preventDefault();
-    alert("Thank you for your order! Total: $" + (document.getElementById("cart-grandtotal")?.textContent || "0"));
-    cart = [];
-    saveCart();
-    renderCart();
-    updateCartBadge();
+    const submitBtn = checkoutForm.querySelector('button[type="submit"]');
+    if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = "Processing..."; }
+    const subtotal = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
+    const shipping = calcShipping(subtotal);
+    const total = subtotal + shipping;
+    setTimeout(() => {
+      alert(`Thank you for your order! Total: $${total.toFixed(2)}`);
+      cart = [];
+      saveCart();
+      renderCart();
+      updateCartBadge();
+      checkoutForm.reset();
+      if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = "Place Order"; }
+    }, 300);
   });
 }
 
@@ -251,6 +260,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const sticky = document.getElementById("checkout-sticky");
   if (sticky) sticky.addEventListener("click", () => {
     const form = document.getElementById("checkout-form");
-    if (form) form.scrollIntoView({ behavior: "smooth", block: "start" });
+    if (form && typeof form.requestSubmit === 'function') {
+      form.requestSubmit();
+    } else if (form) {
+      form.dispatchEvent(new Event('submit', { cancelable: true, bubbles: true }));
+    }
   });
 });
