@@ -1,0 +1,10 @@
+{
+  "name": "the-boutique",
+  "version": "1.0.0",
+  "description": "Elegant shipping supplies & accessories store",
+  "scripts": {
+    "start": "live-server"
+  },
+  "dependencies": {},
+  "devDependencies": {}
+}

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>The Boutique — Shop</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="navbar">
+    <div class="nav-left"><h1 class="logo">The Boutique</h1></div>
+    <nav class="nav-right">
+      <a href="index.html">Home</a>
+      <a href="shop.html" class="active">Shop</a>
+      <a href="cart.html" id="cart-link-2">Cart <span id="cart-badge-2" class="badge">0</span></a>
+    </nav>
+  </header>
+
+  <main>
+    <h2 class="page-title">Shop Our Collection</h2>
+
+    <div class="controls">
+      <input id="search" placeholder="Search products..." />
+      <select id="category">
+        <option value="all">All</option>
+        <option value="boxes">Boxes</option>
+        <option value="tape">Tape</option>
+        <option value="eco">Eco</option>
+      </select>
+    </div>
+
+    <section id="products" class="product-grid" aria-live="polite"></section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 The Boutique — All rights reserved.</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>The Boutique</title>
+  <link rel="stylesheet" href="styles.css">
+  <meta name="description" content="The Boutique — elegant shipping supplies & accessories.">
+</head>
+<body>
+  <header class="navbar">
+    <div class="nav-left">
+      <h1 class="logo">The Boutique</h1>
+    </div>
+    <nav class="nav-right">
+      <a href="index.html" class="active">Home</a>
+      <a href="shop.html">Shop</a>
+      <a href="cart.html" id="cart-link">Cart <span id="cart-badge" class="badge">0</span></a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <h2>Elegant Shipping Supplies & Accessories</h2>
+        <p class="slogan">Style • Quality • Elegance</p>
+        <a class="btn" href="shop.html">Shop Now</a>
+      </div>
+    </section>
+
+    <section class="featured">
+      <h3>Featured</h3>
+      <div class="featured-grid" id="featured-grid">
+        <div class="product-card small">
+          <img src="" alt="Shipping box product image">
+          <h4>Shipping Box</h4>
+          <p class="price">$10</p>
+          <button onclick="location.href='shop.html'">View</button>
+        </div>
+        <div class="product-card small">
+          <img src="" alt="Elegant Tape product image">
+          <h4>Elegant Tape</h4>
+          <p class="price">$5</p>
+          <button onclick="location.href='shop.html'">View</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 The Boutique — All rights reserved.</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
