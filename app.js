@@ -48,7 +48,7 @@ function renderProducts() {
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 6 4 4 6.5 4c1.74 0 3.41.81 4.5 2.09C12.09 4.81 13.76 4 15.5 4 18 4 20 6 20 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
           </button>
         </div>
-        <button class="btn add-to-cart" onclick="addToCart(${i})">
+        <button class="btn add-to-cart" onclick="addToCartByName('${p.name.replace(/'/g, "&#39;")}')">
           <svg class="btn-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4h-2l-1 2h2l3.6 7.59-1.35 2.44A2 2 0 0 0 10 19h9v-2h-9l1.1-2h7.45a2 2 0 0 0 1.79-1.11l3.58-6.89A1 1 0 0 0 22 4H7zM7 22a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm10 0a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"/></svg>
           <span>Add to Cart</span>
         </button>
@@ -57,15 +57,21 @@ function renderProducts() {
     });
 }
 
-// Add to cart
+// Add to cart (by original index, kept for backwards compatibility)
 function addToCart(i) {
   const product = products[i];
+  if (!product) return;
   const existing = cart.find(item => item.name === product.name);
-  if (existing) {
-    existing.qty += 1;
-  } else {
-    cart.push({ ...product, qty: 1 });
-  }
+  if (existing) existing.qty += 1; else cart.push({ ...product, qty: 1 });
+  saveCart();
+  updateCartBadge();
+}
+// Add to cart by product name (stable with filters/search)
+function addToCartByName(name) {
+  const product = products.find(p => p.name === name);
+  if (!product) return;
+  const existing = cart.find(item => item.name === product.name);
+  if (existing) existing.qty += 1; else cart.push({ ...product, qty: 1 });
   saveCart();
   updateCartBadge();
 }
