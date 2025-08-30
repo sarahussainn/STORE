@@ -7,24 +7,48 @@ const products = [
   { name: "Luxury Ribbon", price: 6, category: "tape" },
 ];
 
+let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+let currentCategory = "all";
+
+function saveWishlist() {
+  localStorage.setItem("wishlist", JSON.stringify(wishlist));
+}
+function isWishlisted(name) {
+  return wishlist.includes(name);
+}
+function toggleWishlist(name) {
+  const idx = wishlist.indexOf(name);
+  if (idx >= 0) wishlist.splice(idx, 1); else wishlist.push(name);
+  saveWishlist();
+  renderProducts();
+}
+
 // Render products (shop page)
 function renderProducts() {
   const container = document.getElementById("products");
   if (!container) return;
   container.innerHTML = "";
   const search = document.getElementById("search")?.value.toLowerCase() || "";
-  const category = document.getElementById("category")?.value || "all";
+  const selectCategory = document.getElementById("category")?.value || "all";
+  const category = currentCategory || selectCategory;
   products
     .filter(p => (category === "all" || p.category === category))
     .filter(p => p.name.toLowerCase().includes(search))
     .forEach((p, i) => {
       const div = document.createElement("div");
       div.className = "product-card";
+      const activeClass = isWishlisted(p.name) ? "active" : "";
+      const ariaPressed = isWishlisted(p.name) ? "true" : "false";
       div.innerHTML = `
-        <img src="" alt="${p.name} image">
+        <div class="product-image image-${p.category}"></div>
         <h4>${p.name}</h4>
-        <p class="price">$${p.price}</p>
-        <button onclick="addToCart(${i})">Add to Cart</button>
+        <div class="card-actions">
+          <p class="price">$${p.price}</p>
+          <button class="wishlist-btn ${activeClass}" aria-label="Add to wishlist" aria-pressed="${ariaPressed}" onclick="toggleWishlist('${p.name.replace(/'/g, "&#39;")}')">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 6 4 4 6.5 4c1.74 0 3.41.81 4.5 2.09C12.09 4.81 13.76 4 15.5 4 18 4 20 6 20 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+          </button>
+        </div>
+        <button class="btn" onclick="addToCart(${i})">Add to Cart</button>
       `;
       container.appendChild(div);
     });
@@ -122,6 +146,26 @@ if (clearCartBtn) {
   });
 }
 
+function syncFilterPills(cat) {
+  const pills = document.querySelectorAll('.filter-pill');
+  pills.forEach(p => {
+    const isActive = p.getAttribute('data-category') === cat;
+    p.classList.toggle('active', isActive);
+    p.setAttribute('aria-selected', String(isActive));
+  });
+}
+function initFilterPills() {
+  const pills = document.querySelectorAll('.filter-pill');
+  if (!pills.length) return;
+  pills.forEach(p => p.addEventListener('click', () => {
+    currentCategory = p.getAttribute('data-category');
+    const select = document.getElementById('category');
+    if (select) select.value = currentCategory;
+    syncFilterPills(currentCategory);
+    renderProducts();
+  }));
+}
+
 function initHeroSlider() {
   const slider = document.getElementById("hero-slider");
   if (!slider) return;
@@ -174,5 +218,11 @@ document.addEventListener("DOMContentLoaded", () => {
   const search = document.getElementById("search");
   const category = document.getElementById("category");
   if (search) search.addEventListener("input", renderProducts);
-  if (category) category.addEventListener("change", renderProducts);
+  if (category) category.addEventListener("change", (e) => {
+    currentCategory = e.target.value;
+    syncFilterPills(currentCategory);
+    renderProducts();
+  });
+
+  initFilterPills();
 });
